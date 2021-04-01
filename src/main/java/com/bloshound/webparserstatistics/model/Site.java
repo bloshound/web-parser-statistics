@@ -21,5 +21,38 @@ public class Site {
     @CollectionTable(name = "site_entrances", joinColumns = @JoinColumn(name = "site_id"))
     private Map<String, Long> entranses;
 
+    public Site() {
+    }
 
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public URL getFromUrl() {
+        return fromUrl;
+    }
+
+    public void setFromUrl(URL fromUrl) {
+        this.fromUrl = fromUrl;
+    }
+
+    public Map<String, Long> getEntranses() {
+        return entranses;
+    }
+
+    public void setEntranses(Map<String, Long> entranses) {
+        this.entranses = entranses;
+    }
 }
