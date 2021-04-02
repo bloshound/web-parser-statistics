@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Component
 public class Util {
 
-    public static final Character[] delimiters = {' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\r', '\t'};
+   // public static final Character[] delimiters = {' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\r', '\t'};
 
     private String regex = "[ ,\\.!\\?\";:\\[\\]\\(\\)\n\r\t]+";
 
@@ -31,7 +31,6 @@ public class Util {
 
     public String getRegex() {
         return regex;
-
     }
 
     public void setRegex(String regex) {

@@ -16,7 +16,7 @@ public final class HTMLParser {
     public static final String charSet = "UTF-8";
 
     /**
-     * @param filename is path of file for parsing, wrapped to {@link java.io.InputStream} and use buffer.
+     * @param filename is path name of html file for parsing, wrapped to {@link java.io.InputStream} and use buffer.
      * @return {@link Document} from parser.
      * @throws IOException if the file could not be found, or read.
      */
@@ -25,7 +25,7 @@ public final class HTMLParser {
     }
 
     /**
-     * @param file is a html file for parsing, wrapped to {@link java.io.InputStream} and use  buffer.
+     * @param file is a html file for parsing, wrapped to {@link java.io.InputStream} and use buffer.
      * @return {@link Document} from parser.
      * @throws IOException if the file could not be found, or read.
      */
@@ -38,7 +38,6 @@ public final class HTMLParser {
      * @return
      */
     public static String text(Document document) {
-
-        return document.text();
+        return document.wholeText();
     }
 }
