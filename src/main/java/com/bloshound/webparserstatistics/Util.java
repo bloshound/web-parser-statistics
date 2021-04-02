@@ -2,7 +2,9 @@ package com.bloshound.webparserstatistics;
 
 
 import org.jetbrains.annotations.NotNull;
-import org.springframework.stereotype.Service;
+import org.jsoup.internal.StringUtil;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -12,12 +14,12 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 
-@Service
+@Component
 public class Util {
 
-    // public static final char[] delimiters = {' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\r', '\t'};
+    public static final Character[] delimiters = {' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\r', '\t'};
 
-    private String regex = "[ ,.!?\";:\\[\\]()\n\r\t]+";
+    private String regex = "[ ,\\.!\\?\";:\\[\\]\\(\\)\n\r\t]+";
 
     public Util(String regex) {
         Objects.requireNonNull(regex);
@@ -35,15 +37,17 @@ public class Util {
     public void setRegex(String regex) {
         Objects.requireNonNull(regex);
         this.regex = regex;
+
     }
 
+    private String[] splitOnDelimiters(String content) {
+       content = StringUtils.trimLeadingWhitespace(content);
+      return content.split(regex);
 
-    private String[] splitOnDelimeters(String content) {
-        return content.trim().split(regex);
     }
 
     public Map<String, Long> entrancesCounting(String content) {
-        Map<String, Long> entrances = Arrays.stream(splitOnDelimeters(content))
+        Map<String, Long> entrances = Arrays.stream(splitOnDelimiters(content))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         return entrances;
     }
@@ -55,6 +59,5 @@ public class Util {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> newValue, LinkedHashMap::new));
         return sortedEntrances;
     }
-
 
 }

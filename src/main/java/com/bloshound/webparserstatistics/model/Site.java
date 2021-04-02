@@ -1,5 +1,7 @@
 package com.bloshound.webparserstatistics.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.net.URL;
 import java.util.Map;
@@ -11,7 +13,7 @@ public class Site {
     @Version
     int version;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column()
@@ -19,7 +21,7 @@ public class Site {
 
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "site_entrances", joinColumns = @JoinColumn(name = "site_id"))
-    private Map<String, Long> entranses;
+    private Map<String, Long> entrances;
 
     public Site() {
     }
@@ -48,11 +50,11 @@ public class Site {
         this.fromUrl = fromUrl;
     }
 
-    public Map<String, Long> getEntranses() {
-        return entranses;
+    public Map<String, Long> getEntrances() {
+        return entrances;
     }
 
-    public void setEntranses(Map<String, Long> entranses) {
-        this.entranses = entranses;
+    public void setEntrances(Map<String, Long> entrances) {
+        this.entrances = entrances;
     }
 }
