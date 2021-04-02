@@ -22,6 +22,9 @@ import java.util.logging.Logger;
 
 @Component
 public class HTMLDownloader {
+    /**
+     * set default root path name, of downloaded dir in classpath.
+     */
     public static final String downloadedDirPathName = ".\\downloaded";
     private static final Logger logger = Logger.getLogger(HTMLDownloader.class.getName());
 
@@ -31,6 +34,10 @@ public class HTMLDownloader {
         this.url = inputUrl;
     }
 
+    /**
+     * @return
+     * @throws IOException
+     */
     public String downloadHtml() throws IOException {
         long count;
         Path downloadedSitePath = Paths.get(downloadedDirPathName, url.getHost(), url.getPath(), "page.html");
