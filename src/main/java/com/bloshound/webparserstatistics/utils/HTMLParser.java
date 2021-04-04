@@ -1,4 +1,4 @@
-package com.bloshound.webparserstatistics;
+package com.bloshound.webparserstatistics.utils;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -8,6 +8,10 @@ import java.io.File;
 import java.io.IOException;
 
 
+/**
+ *
+ * use {@link org.jsoup.Jsoup} for most utility methods for html working in application
+ */
 @Component
 public final class HTMLParser {
     /**
@@ -34,8 +38,10 @@ public final class HTMLParser {
     }
 
     /**
-     * @param document
-     * @return
+     * use for get whole text from html page
+     *
+     * @param document is {@link Document} for text
+     * @return String of html text;
      */
     public static String text(Document document) {
         return document.wholeText();

@@ -1,8 +1,8 @@
-package com.bloshound.webparserstatistics;
+package com.bloshound.webparserstatistics.utils;
+
 
 
 import org.jetbrains.annotations.NotNull;
-import org.jsoup.internal.StringUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -11,22 +11,25 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 
 @Component
-public class Util {
+public class HTMLUtil {
 
    // public static final Character[] delimiters = {' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\r', '\t'};
 
-    private String regex = "[ ,\\.!\\?\";:\\[\\]\\(\\)\n\r\t]+";
+    private static final Logger logger = Logger.getLogger(HTMLUtil.class.getName());
 
-    public Util(String regex) {
+    private String regex = "[ ,.!?\";:\\[\\]()\n\r\t]+";
+
+    public HTMLUtil(String regex) {
         Objects.requireNonNull(regex);
         this.regex = regex;
     }
 
-    public Util() {
+    public HTMLUtil() {
     }
 
     public String getRegex() {
@@ -38,6 +41,7 @@ public class Util {
         this.regex = regex;
 
     }
+
 
     private String[] splitOnDelimiters(String content) {
        content = StringUtils.trimLeadingWhitespace(content);

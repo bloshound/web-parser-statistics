@@ -1,4 +1,4 @@
-package com.bloshound.webparserstatistics;
+package com.bloshound.webparserstatistics.utils;
 
 
 import org.springframework.stereotype.Component;
@@ -37,11 +37,13 @@ public class HTMLDownloader {
 
         if (Files.notExists(downloadedSitePath)) Files.createDirectories(downloadedSitePath);
 
-        count = Files.copy(url.openStream(), downloadedSitePath, StandardCopyOption.REPLACE_EXISTING);
-        logger.info(count + " bytes copied from: " + url + " to: " + downloadedSitePath.toFile().getCanonicalFile().getAbsolutePath());
+        count = Files.copy(url.openStream(), downloadedSitePath, StandardCopyOption.REPLACE_EXISTING);//page.html overwriting if new download from this url
+        logger.info(count + " bytes copied\nfrom: " + url + "\nto: " + downloadedSitePath.toFile().getCanonicalFile().getAbsolutePath());
 
         return String.valueOf(downloadedSitePath);
     }
 
-
+    public URL getUrl() {
+        return url;
+    }
 }
