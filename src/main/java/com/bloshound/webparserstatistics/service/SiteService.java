@@ -27,7 +27,7 @@ public class SiteService {
         }
 
         siteRepo.save(site);
-        logger.info("site " + site.getUrl() + " added in database");
+        logger.info("site " + site.getUrl() + " added to database");
         return true;
 
     }

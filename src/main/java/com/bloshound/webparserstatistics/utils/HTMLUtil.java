@@ -15,6 +15,9 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 
+/**
+ * base methods for get words from content. uses {@link org.springframework.util.StringUtils} and {@link java.lang.String}
+ */
 @Component
 public class HTMLUtil {
 
@@ -49,12 +52,20 @@ public class HTMLUtil {
 
     }
 
+    /**
+     * @param content - parsed string of html page or another content.
+     * @return map, contains key - strings of word in content, value - number of counting of this word in content.
+     */
     public Map<String, Long> entrancesCounting(String content) {
         Map<String, Long> entrances = Arrays.stream(splitOnDelimiters(content))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         return entrances;
     }
 
+    /**
+     * @param map is map, contains key - strings of word in content, value - number of counting of this word in content.
+     * @return linked sorted map. if put present key - new value overwrite old value;
+     */
     public LinkedHashMap<String, Long> sortedLinkedEntrancesCounting(@NotNull Map<String, Long> map) {
         LinkedHashMap<String, Long> sortedEntrances = map.entrySet()
                 .stream()
