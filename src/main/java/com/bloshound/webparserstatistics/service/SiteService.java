@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import java.util.Objects;
 import java.util.logging.Logger;
 
+/**
+ * specific methods for working with {@link com.bloshound.webparserstatistics.repo.SiteRepo}
+ */
 @Service
 public class SiteService {
     private static final Logger logger = Logger.getLogger(SiteService.class.getName());

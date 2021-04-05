@@ -9,7 +9,6 @@ import java.io.IOException;
 
 
 /**
- *
  * use {@link org.jsoup.Jsoup} for most utility methods for html working in application
  */
 @Component

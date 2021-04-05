@@ -15,20 +15,21 @@ public class WebParserStatisticsApplication {
     private static final Logger logger = Logger.getLogger(WebParserStatisticsApplication.class.getName());
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         ConfigurableApplicationContext context = SpringApplication.run(WebParserStatisticsApplication.class, args);
         MainService mainService = (MainService) context.getBean(MainService.class);
 
-        input(mainService);
+        activity(mainService);
+
         context.close();
     }
 
-    public static void input(MainService mainService) {
+    public static void activity(MainService mainService) {
         BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
         String input;
 
         while (true) {
-            System.out.println("for exit type <exit>. for lunch application - input url of the existing site:");
+            System.out.println("for exit enter <exit>. for lunch application - enter url of the existing site:");
             try {
                 input = consoleReader.readLine();
                 if (input.equalsIgnoreCase("exit")) {
@@ -38,7 +39,7 @@ public class WebParserStatisticsApplication {
 
                 mainService.execute(input);
 
-            } catch (IOException e) {
+            } catch (IOException | NullPointerException e) {
                 logger.warning(e.getMessage());
             }
         }
