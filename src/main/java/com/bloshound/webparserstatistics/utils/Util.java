@@ -19,20 +19,20 @@ import java.util.stream.Collectors;
  * base methods for get words from content. uses {@link org.springframework.util.StringUtils} and {@link java.lang.String}
  */
 @Component
-public class HTMLUtil {
+public class Util {
 
    // public static final Character[] delimiters = {' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\r', '\t'};
 
-    private static final Logger logger = Logger.getLogger(HTMLUtil.class.getName());
+    private static final Logger logger = Logger.getLogger(Util.class.getName());
 
     private String regex = "[ ,.!?\";:\\[\\]()\n\r\t]+";
 
-    public HTMLUtil(String regex) {
+    public Util(String regex) {
         Objects.requireNonNull(regex);
         this.regex = regex;
     }
 
-    public HTMLUtil() {
+    public Util() {
     }
 
     public String getRegex() {

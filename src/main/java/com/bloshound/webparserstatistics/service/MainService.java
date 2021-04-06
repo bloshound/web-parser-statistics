@@ -3,7 +3,7 @@ package com.bloshound.webparserstatistics.service;
 import com.bloshound.webparserstatistics.model.Site;
 import com.bloshound.webparserstatistics.utils.HTMLDownloader;
 import com.bloshound.webparserstatistics.utils.HTMLParser;
-import com.bloshound.webparserstatistics.utils.HTMLUtil;
+import com.bloshound.webparserstatistics.utils.Util;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +19,13 @@ public class MainService {
 
     private static final Logger logger = Logger.getLogger(MainService.class.getName());
 
-    private final HTMLUtil util;
+    private final Util util;
 
     private final HTMLDownloader htmlDownloader;
 
     private final SiteService siteService;
 
-    public MainService(HTMLUtil util, HTMLDownloader htmlDownloader, SiteService siteService) {
+    public MainService(Util util, HTMLDownloader htmlDownloader, SiteService siteService) {
         this.util = util;
         this.htmlDownloader = htmlDownloader;
         this.siteService = siteService;
